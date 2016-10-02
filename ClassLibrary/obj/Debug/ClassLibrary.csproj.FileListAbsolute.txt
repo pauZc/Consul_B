@@ -1,0 +1,10 @@
+C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\ClassLibrary\bin\Debug\ClassLibrary.dll
+C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\ClassLibrary\bin\Debug\ClassLibrary.pdb
+C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\ClassLibrary\obj\Debug\ClassLibrary.dll
+C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\ClassLibrary\obj\Debug\ClassLibrary.pdb
+D:\appBariatria1.2\ClassLibrary\bin\Debug\ClassLibrary.dll
+D:\appBariatria1.2\ClassLibrary\bin\Debug\ClassLibrary.pdb
+D:\appBariatria1.2\ClassLibrary\obj\Debug\ClassLibrary.csprojResolveAssemblyReference.cache
+D:\appBariatria1.2\ClassLibrary\obj\Debug\ClassLibrary.dll
+D:\appBariatria1.2\ClassLibrary\obj\Debug\ClassLibrary.pdb
