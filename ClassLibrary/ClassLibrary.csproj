@@ -39,7 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Cita.cs" />
+    <Compile Include="Date.cs" />
     <Compile Include="Directory.cs" />
     <Compile Include="GetSHA1.cs" />
     <Compile Include="ListViewData.cs" />

@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ClassLibrary
+﻿namespace ClassLibrary
 {
     public class Directory
     {
-        public static void NuevoFolder(string name)
+        static string url="";
+
+        public void Set_Url(string url_userasigned)
+        {
+
+        }
+        public void New_Pacient(string name)
         {
             //Crea un folder con el nombre del paciente
-            string folderName = @"D:\programaB\pacientes";
+            string folderName = @"" + url + "";//D:\programaB\pacientes
             string pathString = System.IO.Path.Combine(folderName, name);
             System.IO.Directory.CreateDirectory(pathString);
         }

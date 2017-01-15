@@ -37,6 +37,10 @@
     <ApplicationIcon>app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MySql.Data, Version=6.9.9.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\MySql.Data.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -56,6 +60,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="conexion.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConsultaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -71,6 +79,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="conexion.xaml.cs">
+      <DependentUpon>conexion.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConsultaWindow.xaml.cs">
       <DependentUpon>ConsultaWindow.xaml</DependentUpon>
@@ -111,12 +122,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ClassLibrary\ClassLibrary.csproj">
-      <Project>{6b403973-e10a-407d-9193-cb9ee0ac8b71}</Project>
-      <Name>ClassLibrary</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="app.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -136,6 +141,18 @@
     <Resource Include="img\save29.png" />
     <Resource Include="img\app.ico" />
     <Resource Include="img\Untitled-1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\back.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="img\floppy-disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DLLMySQL\DLLMySQL.csproj">
+      <Project>{d99479e4-887e-4622-a796-a1f5eb520dbc}</Project>
+      <Name>DLLMySQL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

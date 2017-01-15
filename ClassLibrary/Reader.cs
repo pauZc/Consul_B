@@ -56,7 +56,7 @@ namespace ClassLibrary
             return pacientes;
         }
       
-        public static List<Cita> ExtraerCitas(string name)
+        public static List<cita> ExtraerCitas(string name)
         {
             StreamReader Lector = default(StreamReader);
             var citas = new List<Cita>();

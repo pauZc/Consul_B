@@ -20,54 +20,49 @@ namespace WpfApplication
     /// </summary>
     public partial class ConsultaWindow : Window
     {
-        public ConsultaWindow(Paciente p)
+        MySQL.DB_connect db = new MySQL.DB_connect();
+        MySQL.patient paciente;
+        public ConsultaWindow(MySQL.patient patient)
         {
+            paciente = patient;
             InitializeComponent();
-            pac = p;
         }
-        List<Cita> citas;
-        Paciente pac;
-        InicioWindow w = new InicioWindow();
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-          
-         
-            lblDate.Content = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
-            lblEdad.Content = w.CalcularEdad(DateTime.Parse(pac.birthday));
-            lblName.Content = pac.nombre;
+            
             try
             {
-                Extraer_citas();
-                
+                lblDate.Content = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+                string[] name = paciente.name.Split('~');
+                lblName.Content = name[0]+" "+name[1];
+                //lblEdad.Content =  //MySQL.Operaciones.CalcularEdad(paciente.birthdate).ToString();
+                CargarDatos();
             }
-            catch (Exception )
+            catch (Exception ex)
             {
-   
+                MessageBox.Show(ex.Message);
             }
-          
         }
-        public void Extraer_citas(){
-            
-         
-                lstCitas.Items.Clear();
-                citas = Reader.ExtraerCitas(pac.nombre);
-                foreach (var item in citas)
-                {
-                    lstCitas.Items.Add(item.fecha);
-                }
-
+        private void CargarDatos()
+        {
+            lstCitas.Items.Clear();
+            foreach (var item in db.Select_PatientDates(paciente.id))
+            {
+                lstCitas.Items.Add(item.datep.Day + "/" + item.datep.Month + "/" + item.datep.Year);
+            }
         }
         private void lstCitas_MouseUp(object sender, MouseButtonEventArgs e)
         {
             try
             {
-                btnSave.Visibility = Visibility.Hidden;
+                var lista = db.Select_PatientDates(paciente.id);
+                btnSave.IsEnabled=false;
                 int posicion = int.Parse(lstCitas.SelectedIndex.ToString());
-                txtGrasa.Text = citas[posicion].grasa.ToString();
-                txtMagra.Text = citas[posicion].magra.ToString();
-                txtWeight.Text = citas[posicion].peso.ToString();
-                txtComent.Text = citas[posicion].comentario.ToString();
-                lblDate.Content = citas[posicion].fecha.ToString();
+                txtGrasa.Text = lista[posicion].fat.ToString();
+                txtMagra.Text = lista[posicion].skinny.ToString();
+                txtWeight.Text = lista[posicion].weight.ToString();
+                txtComent.Text = lista[posicion].coment.ToString();
+                lblDate.Content = lista[posicion].datep.ToString();
           
             }
             catch (Exception ex)
@@ -78,34 +73,48 @@ namespace WpfApplication
         
         private void Clear_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                LIMPIAR();
-            }
-            catch (Exception x)
-            {
-                MessageBox.Show(x.Message);
-            }
-          
-        }
-        private void LIMPIAR()
-        {
-             txtComent.Text = "";
+            txtComent.Text = "";
             txtWeight.Text = "";
             txtMagra.Text = "";
             txtGrasa.Text = "";
-            lblDate.Content = DateTime.Now.Date;
-            btnSave.Visibility = Visibility.Visible;
+            lblDate.Content = DateTime.Now.Day + "/" + DateTime.Now.Month + "/" + DateTime.Now.Year;
+            btnSave.IsEnabled = true;
         }
-
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
-            if (!Writer.WriteDate(pac.nombre, double.Parse(txtGrasa.Text), double.Parse(txtMagra.Text), double.Parse(txtWeight.Text), txtComent.Text))
-                MessageBox.Show("ERROR: NO SE ENCONTRO ARCHIVO PARA ALMACENAR LA CITA");
-            else
+            try
             {
-                Extraer_citas();
-                LIMPIAR();
+                if (txtGrasa.Text != "" || txtMagra.Text != "" || txtWeight.Text != "")
+                {
+
+
+                    if (db.Insert_Date(new MySQL.date
+                    {
+                        datep = DateTime.Now,
+                        fat = double.Parse(txtGrasa.Text),
+                        skinny = double.Parse(txtMagra.Text),
+                        weight = double.Parse(txtWeight.Text),
+                        id_patient = paciente.id,
+                        coment = txtComent.Text
+                    }))
+                    {
+                        MessageBox.Show("Cita agregada");
+                        Clear_Click(Clean, null);
+                        CargarDatos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("No se agrego la cita");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Campos vacios");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: "+ ex.Message);
             }
         }
 
@@ -113,9 +122,10 @@ namespace WpfApplication
 
         private void btnHN_Click(object sender, RoutedEventArgs e)
         {
+            
             try
             {
-                var window = new HNWindow(true, pac.nombre);
+                var window = new HNWindow(db.Select_Patient(paciente.id), 'C');
                 window.Show();
                 this.Hide();
             }
@@ -123,13 +133,16 @@ namespace WpfApplication
             {
                 MessageBox.Show(x.Message);
             }
-
+            
         }
 
         private void UIElement_OnMouseUp(object sender, MouseButtonEventArgs e)
         {
+            var w = new InicioWindow();
             w.Show();
-           Hide();
+            Hide();
         }
+
+        
     }
 }

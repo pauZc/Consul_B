@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
     public class GetSHA1
     {
-        public static string Codify(string str)
+        // change method name before: Codify
+        public static string Encrypt(string str)
         {
 
             SHA1 sha1 = SHA1Managed.Create();

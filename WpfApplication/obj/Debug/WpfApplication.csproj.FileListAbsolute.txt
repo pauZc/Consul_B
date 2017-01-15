@@ -20,21 +20,25 @@ C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\WpfAppl
 C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.csproj.GenerateResource.Cache
 C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.exe
 C:\Users\CASA-User\documents\visual studio 2013\Projects\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.pdb
-D:\appBariatria1.2\WpfApplication\bin\Debug\WpfApplication.exe.config
-D:\appBariatria1.2\WpfApplication\bin\Debug\WpfApplication.exe
-D:\appBariatria1.2\WpfApplication\bin\Debug\WpfApplication.pdb
-D:\appBariatria1.2\WpfApplication\bin\Debug\ClassLibrary.dll
-D:\appBariatria1.2\WpfApplication\bin\Debug\ClassLibrary.pdb
 D:\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.csprojResolveAssemblyReference.cache
 D:\appBariatria1.2\WpfApplication\obj\Debug\ConsultaWindow.baml
 D:\appBariatria1.2\WpfApplication\obj\Debug\HNWindow.baml
 D:\appBariatria1.2\WpfApplication\obj\Debug\InicioWindow.baml
 D:\appBariatria1.2\WpfApplication\obj\Debug\App.baml
+D:\appBariatria1.2\WpfApplication\obj\Debug\conexion.g.cs
 D:\appBariatria1.2\WpfApplication\obj\Debug\ConsultaWindow.g.cs
 D:\appBariatria1.2\WpfApplication\obj\Debug\HNWindow.g.cs
 D:\appBariatria1.2\WpfApplication\obj\Debug\InicioWindow.g.cs
 D:\appBariatria1.2\WpfApplication\obj\Debug\App.g.cs
 D:\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication_MarkupCompile.cache
+D:\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication_MarkupCompile.lref
+D:\appBariatria1.2\WpfApplication\bin\Debug\WpfApplication.exe.config
+D:\appBariatria1.2\WpfApplication\bin\Debug\WpfApplication.exe
+D:\appBariatria1.2\WpfApplication\bin\Debug\WpfApplication.pdb
+D:\appBariatria1.2\WpfApplication\bin\Debug\DLLMySQL.dll
+D:\appBariatria1.2\WpfApplication\bin\Debug\MySql.Data.dll
+D:\appBariatria1.2\WpfApplication\bin\Debug\DLLMySQL.pdb
+D:\appBariatria1.2\WpfApplication\obj\Debug\conexion.baml
 D:\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.g.resources
 D:\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.Properties.Resources.resources
 D:\appBariatria1.2\WpfApplication\obj\Debug\WpfApplication.csproj.GenerateResource.Cache

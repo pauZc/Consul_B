@@ -9,33 +9,29 @@
         </Grid.RowDefinitions>
         <Grid Background="#FFF1EEEE">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="129*"/>
-                <ColumnDefinition Width="39*"/>
+                <ColumnDefinition Width="72*"/>
+                <ColumnDefinition Width="96*"/>
                 <ColumnDefinition Width="8*"/>
-                <ColumnDefinition Width="398*"/>
+                <ColumnDefinition Width="399*"/>
                 <ColumnDefinition Width="118*"/>
                 <ColumnDefinition Width="45*"/>
             </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Content="Nombre:" FontSize="18" HorizontalContentAlignment="Right" VerticalContentAlignment="Center"></Label>
             <Label Name="Add" MouseUp="btnNewpac_Click" Grid.Column="5">
                 <Label.Background>
                     <ImageBrush ImageSource="img/add199 (1).png" Stretch="UniformToFill"/>
                 </Label.Background>
             </Label>
-            <TextBox TextChanged="TextBox_TextChanged" Name="txtBuscar"  Grid.Column="3" Background="{x:Null}" Foreground="DarkBlue"></TextBox>
-            <Label Grid.Column="1">
-                <Label.Background>
-                    <ImageBrush ImageSource="img/magnifying-glass24 (1).png" Stretch="UniformToFill"/>
-                </Label.Background>
+            <TextBox VerticalContentAlignment="Center" FontSize="16"  TextChanged="TextBox_TextChanged" Name="txtBuscar"  Grid.Column="3" Background="{x:Null}" Foreground="DarkBlue"></TextBox>
 
-            </Label>
         </Grid>
         <ListView Name="lstPacientes" Grid.Row="1" MouseUp="lstPacientes_MouseUp" >
             <ListView.View>
                 <GridView AllowsColumnReorder="true">
-                   
+
                     <GridViewColumn Header="Nombre" Width="370" DisplayMemberBinding="{Binding Path=Col1}" />
-                    <GridViewColumn Header="Edad" Width="80" DisplayMemberBinding="{Binding Path=Col2}" />
-                    <GridViewColumn Header="Correo" Width="130" DisplayMemberBinding="{Binding Path=Col3}" />
+                    <GridViewColumn Header="Registro" Width="60" DisplayMemberBinding="{Binding Path=Col2}" />
+                    <GridViewColumn Header="Correo" Width="150" DisplayMemberBinding="{Binding Path=Col3}" />
                     <GridViewColumn Header="Teléfono" Width="110" DisplayMemberBinding="{Binding Path=Col4}" />
                 </GridView>
             </ListView.View>

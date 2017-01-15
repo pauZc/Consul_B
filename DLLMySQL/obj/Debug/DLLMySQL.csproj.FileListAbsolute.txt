@@ -1,0 +1,6 @@
+D:\appBariatria1.2\DLLMySQL\bin\Debug\DLLMySQL.dll
+D:\appBariatria1.2\DLLMySQL\bin\Debug\DLLMySQL.pdb
+D:\appBariatria1.2\DLLMySQL\obj\Debug\DLLMySQL.csprojResolveAssemblyReference.cache
+D:\appBariatria1.2\DLLMySQL\obj\Debug\DLLMySQL.dll
+D:\appBariatria1.2\DLLMySQL\obj\Debug\DLLMySQL.pdb
+D:\appBariatria1.2\DLLMySQL\bin\Debug\MySql.Data.dll

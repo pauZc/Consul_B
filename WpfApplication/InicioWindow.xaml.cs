@@ -25,71 +25,71 @@ namespace WpfApplication
         {
             InitializeComponent();
         }
-        private static List<Paciente> lstPaciente;
-        private static List<Paciente> lstPacienteA;
-
+        MySQL.DB_connect db = new MySQL.DB_connect();
+         List<MySQL.patient> lstPaciente = new List<MySQL.patient>();
+         List<MySQL.patient> lstPacienteA = new List<MySQL.patient>();
         private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            if (db.ConnectDB())
+            {
+                lstPaciente = db.Select_Patients();
+                lstPacienteA = new List<MySQL.patient>();
+                FillView();
+            }
+            else
+                MessageBox.Show("Error al conectarse con la BD");
+
+            txtBuscar.Focus();
+        }
+        
+        private void FillView()
         {
             try
             {
-                lstPaciente = Reader.BuscarPacientes();
-                lstPacienteA = new List<Paciente>();
-                FillView();
-
+                foreach (var item in lstPaciente)
+                {
+                    string[] nombre = item.name.Split('~');
+                    lstPacientes.Items.Add(new ListViewData(nombre[0] + " " + nombre[1],item.register_day.Year.ToString(), item.mail, item.phone));
+                    lstPacientes.SelectedIndex = lstPacientes.Items.Count - 1;
+                }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("No se han registrado pacientes");
             }
-        
-        }
-        private void FillView()
-        {
-           
+            
 
-            foreach (var item in lstPaciente)
-            {
-                int edad = CalcularEdad(DateTime.Parse(item.birthday));
-                lstPacientes.Items.Add(new ListViewData(item.nombre,edad.ToString(), item.correo, item.telefono));
-                lstPacientes.SelectedIndex = lstPacientes.Items.Count - 1;
-
-            }
-
-        }
-        public int CalcularEdad(DateTime bday)
-        {
-            DateTime today = DateTime.Today;
-            int age = today.Year - bday.Year;
-            if (bday > today.AddYears(-age)) age--;
-            return age;
         }
         private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             try
             {
+                MySQL.Operaciones op = new MySQL.Operaciones();
                 lstPacienteA.Clear();
                 lstPacientes.Items.Clear();
-                foreach (var item in lstPaciente)
+                foreach (var item in db.Select_Patients())
                 {
-                    if (item.nombre.ToUpper().Contains(txtBuscar.Text.ToUpper()))
+                    string[] nombre = item.name.Split('~');
+                    string name = nombre[0] + " " + nombre[1];
+                    if (name.ToUpper().Contains(txtBuscar.Text.ToUpper()))
                     {
-                        lstPacientes.Items.Add(new ListViewData(item.nombre, CalcularEdad(DateTime.Parse(item.birthday)).ToString(), item.correo, item.telefono));
+                        lstPacientes.Items.Add(new ListViewData(name, item.register_day.Year.ToString(), item.mail, item.phone));
                         lstPacienteA.Add(item);
                     }
+                    
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-          
         }
 
         private void btnNewpac_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                var window = new HNWindow(false, "");
+                var window = new HNWindow(null, 'I');
                 window.Show();
                 this.Hide();
             }
@@ -97,28 +97,33 @@ namespace WpfApplication
             {
                 MessageBox.Show(ex.Message);
             }
-
         }
 
         private void lstPacientes_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            try
+            {
 
-               if(lstPacienteA.Count!=0)
-               {
-                   
-                   var w = new ConsultaWindow(lstPacienteA[lstPacientes.SelectedIndex]);
-                   w.Show();
-               }
-            else
-               {
-                   var w = new ConsultaWindow(lstPaciente[lstPacientes.SelectedIndex]);
-                   w.Show();
-               }
-            
-          
 
+                if (lstPacientes.SelectedItems.Count==lstPacienteA.Count)
+                {
+                    ConsultaWindow w = new ConsultaWindow(lstPacienteA[lstPacientes.SelectedIndex]);
+                    w.Show();
+                    Hide();
+                }
+                else
+                {
+                    ConsultaWindow  w = new ConsultaWindow(lstPaciente[lstPacientes.SelectedIndex]);
+                    w.Show();
+                    Hide();
+                }
+                
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Error: Selección Inválida");
+            }
         }
 
-       
     }
 }

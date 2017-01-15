@@ -8,7 +8,7 @@
             <ColumnDefinition Width="40*"/>
             <ColumnDefinition Width="120*"/>
         </Grid.ColumnDefinitions>
-        <ListBox MouseUp="lstCitas_MouseUp" Foreground="White" Name="lstCitas" Background="#FF30377A"></ListBox>
+        <ListBox MouseUp="lstCitas_MouseUp" Foreground="White" Name="lstCitas" Background="#FF4F4F4F"></ListBox>
         <Grid Grid.Column="1">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="137*"/>
@@ -33,12 +33,14 @@
             </Grid.RowDefinitions>
             <Label Foreground="DimGray" Name="lblDate" HorizontalAlignment="Right" VerticalAlignment="Top" Content="DD/MM/YYYY" Grid.Row="2" Grid.Column="1" Margin="0,25,0,0" Height="29" Width="102" ></Label>
             <Label Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="3" Content="Nombre:"></Label>
-            <Label  Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="5" Content="Edad:" ></Label>
+            <!--012017  label edad-->
+            <Label Visibility="Hidden" Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="5" Content="Edad:" ></Label>
             <Label Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="7" Content="Grasa:" ></Label>
             <Label Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="9" Content="Magra:" Grid.RowSpan="2" ></Label>
             <Label Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="11" Content="Peso:" ></Label>
             <Label Foreground="#607D8B" FontWeight="DemiBold" HorizontalContentAlignment="Right" Grid.Row="13" Content="Comentarios:" ></Label>
             <Label Name="lblName" Grid.Column="1" Grid.Row="3"></Label>
+            <!--012017  label edad-->
             <Label Name="lblEdad" Grid.Column="1" Grid.Row="5"></Label>
             <TextBox Name="txtGrasa" Grid.Column="1" Grid.Row="7"></TextBox>
             <TextBox Name="txtMagra" Grid.Column="1" Grid.Row="9" ></TextBox>
@@ -47,29 +49,17 @@
             <!--MENU-->
             <Grid Grid.Row="1" Grid.Column="1">
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="148*"/>
-                    <ColumnDefinition Width="24*"/>
-                    <ColumnDefinition Width="19*"/>
-                    <ColumnDefinition Width="24*"/>
-                    <ColumnDefinition Width="21*"/>
-                    <ColumnDefinition Width="21*"/>
-                    <ColumnDefinition Width="15*"/>
+                    <ColumnDefinition Width="64*"/>
+                    <ColumnDefinition Width="45*"/>
+                    <ColumnDefinition Width="27*"/>
                 </Grid.ColumnDefinitions>
-                <Label Grid.Column="5" Name="Clean" MouseUp="Clear_Click">
-                    <Label.Background>
-                        <ImageBrush ImageSource="img/clean11.png" Stretch="UniformToFill"/>
-                    </Label.Background>
-                </Label>
-                <Label Grid.Column="1" Name="History" MouseUp="btnHN_Click">
-                    <Label.Background>
-                        <ImageBrush ImageSource="img/history6.png" Stretch="UniformToFill"/>
-                    </Label.Background>
-                </Label>
-                <Label Name="btnSave" Grid.Column="3" MouseUp="btnSave_Click">
-                    <Label.Background>
-                        <ImageBrush ImageSource="img/save-file.png" Stretch="UniformToFill"/>
-                    </Label.Background>
-                </Label>
+
+                <Button  Name="Clean"  Grid.Column="2" Click="Clear_Click" Content="Nuevo" Background="#FF28C183" BorderBrush="White" Foreground="White" FontSize="14"/>
+
+                <Button Name="History" Click="btnHN_Click" Content="Historia Clínica" Background="#FF28C183" BorderBrush="White" Foreground="White" FontSize="14">
+                  
+                </Button>
+                <Button Name="btnSave" Grid.Column="1" Click="btnSave_Click"  Content="Guardar" Background="#FF28C183" BorderBrush="White" Foreground="White" FontSize="14"/>
             </Grid>
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -79,7 +69,7 @@
                 </Grid.ColumnDefinitions>
                 <Label Grid.Column="1" MouseUp="UIElement_OnMouseUp">
                     <Label.Background>
-                        <ImageBrush ImageSource="img/menu2 (2).png" Stretch="UniformToFill"/>
+                        <ImageBrush ImageSource="img/back.png" Stretch="UniformToFill"/>
                     </Label.Background>
                 </Label>
             </Grid>

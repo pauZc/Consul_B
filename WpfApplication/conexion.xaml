@@ -1,0 +1,14 @@
+﻿<Window x:Class="WpfApplication.conexion"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication"
+        mc:Ignorable="d"
+        Title="conexion" Height="300" Width="300">
+    <Grid>
+        <Button x:Name="button" Content="Probar" HorizontalAlignment="Left" Margin="71,58,0,0" VerticalAlignment="Top" Width="111" Height="46" Click="button_Click" RenderTransformOrigin="0.312,-0.109"/>
+        <Button x:Name="button2" Content="registrar" HorizontalAlignment="Left" Margin="71,126,0,0" VerticalAlignment="Top" Width="111" Height="46"  RenderTransformOrigin="0.312,-0.109" Click="button2_Click"/>
+
+    </Grid>
+</Window>
